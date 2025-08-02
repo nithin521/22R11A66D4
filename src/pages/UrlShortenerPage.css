@@ -1,0 +1,107 @@
+.urlshortener-bulk-container {
+  max-width: 520px;
+  margin: 40px auto;
+  padding: 32px 24px;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.urlshortener-bulk-title {
+  text-align: center;
+  font-size: 1.7rem;
+  font-weight: 600;
+  margin-bottom: 28px;
+  color: #222;
+}
+
+.urlshortener-bulk-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.urlshortener-bulk-row {
+  background: #fafbfc;
+  border: 1px solid #f0f0f0;
+  border-radius: 8px;
+  padding: 16px 12px 10px 12px;
+  margin-bottom: 0;
+  /* border-bottom: 1px solid ; */
+}
+
+.urlshortener-bulk-label {
+  display: block;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 4px;
+  color: #333;
+}
+
+.urlshortener-bulk-input {
+  width: 100%;
+  padding: 7px 10px;
+  border: 1px solid #d0d0d0;
+  border-radius: 5px;
+  font-size: 1rem;
+  margin-bottom: 8px;
+  background: #fff;
+  transition: border 0.2s;
+}
+.urlshortener-bulk-input:focus {
+  border: 1.5px solid #1976d2;
+  outline: none;
+}
+
+.urlshortener-bulk-error {
+  color: #d32f2f;
+  font-size: 0.97rem;
+  margin-bottom: 2px;
+}
+
+.urlshortener-bulk-submit {
+  width: 100%;
+  padding: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  background: #1976d2;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.urlshortener-bulk-submit:hover {
+  background: #1256a3;
+}
+
+.urlshortener-bulk-results {
+  margin-top: 32px;
+}
+.urlshortener-bulk-results-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+.urlshortener-bulk-result-list {
+  list-style: none;
+  padding: 0;
+}
+.urlshortener-bulk-result-item {
+  background: #f7fafd;
+  border: 1px solid #e0e0e0;
+  border-radius: 7px;
+  padding: 12px 10px 8px 10px;
+  margin-bottom: 14px;
+}
+.urlshortener-bulk-result-label {
+  font-weight: 500;
+  color: #444;
+}
+.urlshortener-bulk-result-link {
+  color: #1976d2;
+  text-decoration: underline;
+  word-break: break-all;
+}
