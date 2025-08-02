@@ -34,13 +34,39 @@ const RedirectHandler = () => {
       );
       return;
     }
-    logEvent(
-      "urlshortener",
-      "info",
-      "frontend",
-      `Redirecting: ${code} -> ${entry.url}`
-    );
-    window.location.href = entry.url;
+    const recordClickAndRedirect = async () => {
+      let location = {};
+      try {
+        const res = await fetch("https://ipapi.co/json/");
+        if (res.ok) {
+          location = await res.json();
+        }
+      } catch {}
+      const click = {
+        timestamp: Date.now(),
+        referrer: document.referrer,
+        city: location.city || "",
+        country: location.country_name || "",
+      };
+      let urlClicks = {};
+      try {
+        urlClicks = JSON.parse(localStorage.getItem("urlClicks")) || {};
+      } catch {
+        urlClicks = {};
+      }
+      if (!urlClicks[code]) urlClicks[code] = [];
+      urlClicks[code].push(click);
+      localStorage.setItem("urlClicks", JSON.stringify(urlClicks));
+      logEvent(
+        "urlshortener",
+        "info",
+        "frontend",
+        `Redirecting: ${code} -> ${entry.url} (click recorded)`
+      );
+      window.location.href = entry.url;
+    };
+
+    recordClickAndRedirect();
   }, [code]);
 
   if (error) {

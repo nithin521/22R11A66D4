@@ -1,0 +1,31 @@
+.navbar {
+  width: 100%;
+  background: #1976d2;
+  padding: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+.navbar-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  gap: 18px;
+  padding: 0 16px;
+  height: 48px;
+  align-items: center;
+}
+.navbar-link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.08rem;
+  font-weight: 500;
+  padding: 7px 16px;
+  border-radius: 5px;
+  transition: background 0.18s;
+}
+.navbar-link:hover {
+  background: #1256a3;
+}
+.navbar-link.active {
+  background: #fff;
+  color: #1976d2;
+}

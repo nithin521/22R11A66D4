@@ -95,48 +95,54 @@ const UrlShortener = () => {
   };
 
   return (
-    <form className="urlshortener-container" onSubmit={handleSubmit}>
-      <div className="urlshortener-title">Custom URL Shortener</div>
-      <div className="urlshortener-form-group">
-        <label className="urlshortener-label">Long URL:</label>
-        <input
-          className="urlshortener-input"
-          ref={urlInput}
-          type="text"
-          value={url}
-          onChange={(e) => setUrl(e.target.value)}
-          placeholder="https://example.com"
-          required
-        />
-      </div>
-      <div className="urlshortener-form-group">
-        <label className="urlshortener-label">Custom Shortcode (optional):</label>
-        <input
-          className="urlshortener-input"
-          type="text"
-          value={shortcode}
-          onChange={(e) => setShortcode(e.target.value)}
-          placeholder="e.g. my-link"
-        />
-        <small className="urlshortener-help">Leave blank for auto-generated code</small>
-      </div>
-      <div className="urlshortener-form-group">
-        <label className="urlshortener-label">Validity (minutes):</label>
-        <input
-          className="urlshortener-input"
-          type="number"
-          value={validity}
-          onChange={(e) => setValidity(e.target.value)}
-          min={1}
-        />
-        <small className="urlshortener-help">(Default: 30 min)</small>
-      </div>
-      {error && <div className="urlshortener-error">{error}</div>}
-      {success && <div className="urlshortener-success">{success}</div>}
-      <button className="urlshortener-submit" type="submit">
-        Shorten URL
-      </button>
-    </form>
+    <div className="urlshortener-bg">
+      <form className="urlshortener-container" onSubmit={handleSubmit}>
+        <div className="urlshortener-header">
+          <div className="urlshortener-icon">🔗</div>
+          <div className="urlshortener-title">Custom URL Shortener</div>
+          <div className="urlshortener-subtitle">Create, share, and track your short links easily!</div>
+        </div>
+        <div className="urlshortener-form-group">
+          <label className="urlshortener-label">Long URL:</label>
+          <input
+            className="urlshortener-input"
+            ref={urlInput}
+            type="text"
+            value={url}
+            onChange={(e) => setUrl(e.target.value)}
+            placeholder="https://example.com"
+            required
+          />
+        </div>
+        <div className="urlshortener-form-group">
+          <label className="urlshortener-label">Custom Shortcode (optional):</label>
+          <input
+            className="urlshortener-input"
+            type="text"
+            value={shortcode}
+            onChange={(e) => setShortcode(e.target.value)}
+            placeholder="e.g. my-link"
+          />
+          <small className="urlshortener-help">Leave blank for auto-generated code</small>
+        </div>
+        <div className="urlshortener-form-group">
+          <label className="urlshortener-label">Validity (minutes):</label>
+          <input
+            className="urlshortener-input"
+            type="number"
+            value={validity}
+            onChange={(e) => setValidity(e.target.value)}
+            min={1}
+          />
+          <small className="urlshortener-help">(Default: 30 min)</small>
+        </div>
+        {error && <div className="urlshortener-error">{error}</div>}
+        {success && <div className="urlshortener-success">{success}</div>}
+        <button className="urlshortener-submit" type="submit">
+          Shorten URL
+        </button>
+      </form>
+    </div>
   );
 };
 

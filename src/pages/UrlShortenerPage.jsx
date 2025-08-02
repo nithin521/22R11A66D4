@@ -91,7 +91,7 @@ const UrlShortenerPage = () => {
 
   return (
     <div className="urlshortener-bulk-container">
-      <div className="urlshortener-bulk-title">🔗 Bulk URL Shortener</div>
+      <div className="urlshortener-bulk-title"> Bulk URL Shortener</div>
       <form className="urlshortener-bulk-form" onSubmit={handleSubmit}>
         {inputs.map((input, idx) => (
           <div className="urlshortener-bulk-row" key={idx}>
@@ -100,31 +100,43 @@ const UrlShortenerPage = () => {
               className="urlshortener-bulk-input"
               type="text"
               value={input.url}
-              onChange={e => handleInputChange(idx, "url", e.target.value)}
+              onChange={(e) => handleInputChange(idx, "url", e.target.value)}
               placeholder="https://example.com"
             />
-            <label className="urlshortener-bulk-label">Validity (minutes):</label>
+            <label className="urlshortener-bulk-label">
+              Validity (minutes):
+            </label>
             <input
               className="urlshortener-bulk-input"
               type="number"
               value={input.validity}
-              onChange={e => handleInputChange(idx, "validity", e.target.value)}
+              onChange={(e) =>
+                handleInputChange(idx, "validity", e.target.value)
+              }
               min={1}
               placeholder={DEFAULT_VALIDITY}
             />
             <small>(Default: 30 min)</small>
-            <label className="urlshortener-bulk-label">Custom Shortcode (optional):</label>
+            <label className="urlshortener-bulk-label">
+              Custom Shortcode (optional):
+            </label>
             <input
               className="urlshortener-bulk-input"
               type="text"
               value={input.shortcode}
-              onChange={e => handleInputChange(idx, "shortcode", e.target.value)}
+              onChange={(e) =>
+                handleInputChange(idx, "shortcode", e.target.value)
+              }
               placeholder="e.g. my-link"
             />
-            {errors[idx] && <div className="urlshortener-bulk-error">{errors[idx]}</div>}
+            {errors[idx] && (
+              <div className="urlshortener-bulk-error">{errors[idx]}</div>
+            )}
           </div>
         ))}
-        <button className="urlshortener-bulk-submit" type="submit">Shorten URLs</button>
+        <button className="urlshortener-bulk-submit" type="submit">
+          Shorten URLs
+        </button>
       </form>
       {results.length > 0 && (
         <div className="urlshortener-bulk-results">
@@ -132,9 +144,29 @@ const UrlShortenerPage = () => {
           <ul className="urlshortener-bulk-result-list">
             {results.map((res, idx) => (
               <li className="urlshortener-bulk-result-item" key={idx}>
-                <div><span className="urlshortener-bulk-result-label">Original:</span> <span style={{ wordBreak: "break-all" }}>{res.original}</span></div>
-                <div><span className="urlshortener-bulk-result-label">Short:</span> <a className="urlshortener-bulk-result-link" href={res.short} target="_blank" rel="noopener noreferrer">{res.short}</a></div>
-                <div><span className="urlshortener-bulk-result-label">Expires:</span> {new Date(res.expiresAt).toLocaleString()}</div>
+                <div>
+                  <span className="urlshortener-bulk-result-label">
+                    Original:
+                  </span>{" "}
+                  <span style={{ wordBreak: "break-all" }}>{res.original}</span>
+                </div>
+                <div>
+                  <span className="urlshortener-bulk-result-label">Short:</span>{" "}
+                  <a
+                    className="urlshortener-bulk-result-link"
+                    href={res.short}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {res.short}
+                  </a>
+                </div>
+                <div>
+                  <span className="urlshortener-bulk-result-label">
+                    Expires:
+                  </span>{" "}
+                  {new Date(res.expiresAt).toLocaleString()}
+                </div>
               </li>
             ))}
           </ul>

@@ -22,18 +22,34 @@ const UrlShortenerStatsPage = () => {
   const [clicks, setClicks] = useState({});
 
   useEffect(() => {
+    // Initial load
     setUrls(getUrlsFromStorage());
     setClicks(getClicksFromStorage());
+    // Poll for updates every 1s
+    const interval = setInterval(() => {
+      setUrls(getUrlsFromStorage());
+      setClicks(getClicksFromStorage());
+    }, 1000);
+    return () => clearInterval(interval);
   }, []);
 
+  // Sort: non-expired first, then expired
+  const now = Date.now();
   const urlEntries = Object.entries(urls);
+  const sortedEntries = urlEntries.sort(([, a], [, b]) => {
+    const aExpired = a.expiresAt && now > a.expiresAt;
+    const bExpired = b.expiresAt && now > b.expiresAt;
+    if (aExpired === bExpired) return 0;
+    return aExpired ? 1 : -1;
+  });
 
   return (
     <div className="stats-container">
       <h2 className="stats-title">Shortened URL Statistics</h2>
-      {urlEntries.length === 0 && <div className="stats-no-urls">No shortened URLs found.</div>}
-      {urlEntries.map(([code, data]) => {
+      {sortedEntries.length === 0 && <div className="stats-no-urls">No shortened URLs found.</div>}
+      {sortedEntries.map(([code, data]) => {
         const clickList = clicks[code] || [];
+        const isExpired = data.expiresAt && now > data.expiresAt;
         return (
           <div className="stats-url-block" key={code}>
             <div style={{ marginBottom: 6 }}>
@@ -41,6 +57,7 @@ const UrlShortenerStatsPage = () => {
               <a href={`/${code}`} target="_blank" rel="noopener noreferrer">
                 {window.location.origin}/{code}
               </a>
+              {isExpired && <span className="stats-expired-tag">Expired</span>}
             </div>
             <div>
               <span className="stats-url-label">Original URL:</span>{" "}

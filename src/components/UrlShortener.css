@@ -1,25 +1,42 @@
-a.urlshortener-container {
-  max-width: 400px;
-  margin: 40px auto;
-  padding: 24px 18px;
-  border: 1px solid #e0e0e0;
-  border-radius: 10px;
+.urlshortener-bg {
+  min-height: 100vh;
+  background: linear-gradient(120deg, #e3f0ff 0%, #f8fcff 100%);
+  padding-top: 60px;
+}
+.urlshortener-container {
+  max-width: 410px;
+  margin: 0 auto;
+  padding: 32px 22px 26px 22px;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 16px;
   background: #fff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 4px 24px 0 rgba(25, 118, 210, 0.08);
+  position: relative;
+  z-index: 2;
 }
-
-.urlshortener-title {
+.urlshortener-header {
   text-align: center;
-  font-size: 1.4rem;
-  font-weight: 600;
-  margin-bottom: 22px;
+  margin-bottom: 30px;
+}
+.urlshortener-icon {
+  font-size: 2.5rem;
+  color: #1976d2;
+  margin-bottom: 6px;
+}
+.urlshortener-title {
+  font-size: 1.7rem;
+  font-weight: 700;
   color: #222;
+  margin-bottom: 4px;
 }
-
+.urlshortener-subtitle {
+  font-size: 1.08rem;
+  color: #555;
+  margin-bottom: 0;
+}
 .urlshortener-form-group {
-  margin-bottom: 14px;
+  margin-bottom: 16px;
 }
-
 .urlshortener-label {
   display: block;
   font-size: 1rem;
@@ -27,62 +44,49 @@ a.urlshortener-container {
   margin-bottom: 4px;
   color: #333;
 }
-
 .urlshortener-input {
-  width: 90%;
-  padding: 7px 10px;
-  border: 1px solid #d0d0d0;
-  border-radius: 5px;
+  width: 100%;
+  padding: 8px 11px;
+  border: 1.5px solid #d0d0d0;
+  border-radius: 6px;
   font-size: 1rem;
   background: #fff;
-  transition: border 0.2s;
+  transition: border 0.2s, box-shadow 0.2s;
 }
 .urlshortener-input:focus {
   border: 1.5px solid #1976d2;
   outline: none;
+  box-shadow: 0 0 0 2px #e3f0ff;
 }
-
 .urlshortener-help {
   font-size: 0.95rem;
   color: #888;
   margin-left: 2px;
 }
-
 .urlshortener-error {
   color: #d32f2f;
   font-size: 0.97rem;
   margin-bottom: 2px;
 }
-
 .urlshortener-success {
   color: #388e3c;
   font-size: 0.97rem;
   margin-bottom: 2px;
 }
-
 .urlshortener-submit {
   width: 100%;
-  padding: 10px;
-  font-size: 1.08rem;
+  padding: 12px;
+  font-size: 1.13rem;
   font-weight: 600;
-  background: #1976d2;
+  background: linear-gradient(90deg, #1976d2 60%, #42a5f5 100%);
   color: #fff;
   border: none;
-  border-radius: 6px;
+  border-radius: 7px;
   margin-top: 10px;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px 0 rgba(25, 118, 210, 0.08);
 }
 .urlshortener-submit:hover {
-  background: #1256a3;
-}
-
-.urlshortener-container {
-  max-width: 500px;
-  margin: 40px auto;
-  padding: 24px 18px;
-  border: 1px solid #e0e0e0;
-  border-radius: 10px;
-  background: #fff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  background: linear-gradient(90deg, #1256a3 60%, #1976d2 100%);
 }
