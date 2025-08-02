@@ -1,0 +1,88 @@
+a.urlshortener-container {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 24px 18px;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.urlshortener-title {
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 22px;
+  color: #222;
+}
+
+.urlshortener-form-group {
+  margin-bottom: 14px;
+}
+
+.urlshortener-label {
+  display: block;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 4px;
+  color: #333;
+}
+
+.urlshortener-input {
+  width: 90%;
+  padding: 7px 10px;
+  border: 1px solid #d0d0d0;
+  border-radius: 5px;
+  font-size: 1rem;
+  background: #fff;
+  transition: border 0.2s;
+}
+.urlshortener-input:focus {
+  border: 1.5px solid #1976d2;
+  outline: none;
+}
+
+.urlshortener-help {
+  font-size: 0.95rem;
+  color: #888;
+  margin-left: 2px;
+}
+
+.urlshortener-error {
+  color: #d32f2f;
+  font-size: 0.97rem;
+  margin-bottom: 2px;
+}
+
+.urlshortener-success {
+  color: #388e3c;
+  font-size: 0.97rem;
+  margin-bottom: 2px;
+}
+
+.urlshortener-submit {
+  width: 100%;
+  padding: 10px;
+  font-size: 1.08rem;
+  font-weight: 600;
+  background: #1976d2;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.urlshortener-submit:hover {
+  background: #1256a3;
+}
+
+.urlshortener-container {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 24px 18px;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}

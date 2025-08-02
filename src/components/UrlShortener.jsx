@@ -3,6 +3,7 @@ import { logEvent } from "../middleware/logger";
 import { isValid } from "../utils/isValid";
 import { isValidShortcode } from "../utils/isValidShortcode";
 import { generateShorterner } from "../utils/generateShortener";
+import "./UrlShortener.css";
 
 const UrlShortener = () => {
   const [url, setUrl] = useState("");
@@ -94,59 +95,45 @@ const UrlShortener = () => {
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      style={{
-        maxWidth: 400,
-        margin: "40px auto",
-        padding: 20,
-        border: "1px solid #ccc",
-        borderRadius: 8,
-      }}
-    >
-      <h2> Custom URL Shortener</h2>
-      <div style={{ marginBottom: 12 }}>
-        <label>Long URL:</label>
+    <form className="urlshortener-container" onSubmit={handleSubmit}>
+      <div className="urlshortener-title">Custom URL Shortener</div>
+      <div className="urlshortener-form-group">
+        <label className="urlshortener-label">Long URL:</label>
         <input
+          className="urlshortener-input"
           ref={urlInput}
           type="text"
           value={url}
           onChange={(e) => setUrl(e.target.value)}
           placeholder="https://example.com"
-          style={{ width: "100%" }}
           required
         />
       </div>
-      <div style={{ marginBottom: 12 }}>
-        <label>Custom Shortcode (optional):</label>
+      <div className="urlshortener-form-group">
+        <label className="urlshortener-label">Custom Shortcode (optional):</label>
         <input
+          className="urlshortener-input"
           type="text"
           value={shortcode}
           onChange={(e) => setShortcode(e.target.value)}
           placeholder="e.g. my-link"
-          style={{ width: "100%" }}
         />
-        <small>Leave blank for auto-generated code</small>
+        <small className="urlshortener-help">Leave blank for auto-generated code</small>
       </div>
-      <div style={{ marginBottom: 12 }}>
-        <label>Validity (minutes):</label>
+      <div className="urlshortener-form-group">
+        <label className="urlshortener-label">Validity (minutes):</label>
         <input
+          className="urlshortener-input"
           type="number"
           value={validity}
           onChange={(e) => setValidity(e.target.value)}
           min={1}
-          style={{ width: 80 }}
         />
-        <small style={{ marginLeft: 8 }}>(Default: 30 min)</small>
+        <small className="urlshortener-help">(Default: 30 min)</small>
       </div>
-      {error && <div style={{ color: "red", marginBottom: 8 }}>{error}</div>}
-      {success && (
-        <div style={{ color: "green", marginBottom: 8 }}>{success}</div>
-      )}
-      <button
-        type="submit"
-        style={{ width: "100%", padding: 10, fontWeight: 600 }}
-      >
+      {error && <div className="urlshortener-error">{error}</div>}
+      {success && <div className="urlshortener-success">{success}</div>}
+      <button className="urlshortener-submit" type="submit">
         Shorten URL
       </button>
     </form>
