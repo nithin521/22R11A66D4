@@ -1,24 +1,28 @@
 import { useState, useRef } from "react";
 import { logEvent } from "../middleware/logger";
-import {
-  isValid,
-  isValidShortcode,
-  generateShorterner,
-} from "../utils/validation";
+import { isValid } from "../utils/isValid";
+import { isValidShortcode } from "../utils/isValidShortcode";
+import { generateShorterner } from "../utils/generateShortener";
 
 const UrlShortener = () => {
   const [url, setUrl] = useState("");
   const [shortcode, setShortcode] = useState("");
-  const [validity, setValidity] = useState(""); // blank means default
+  const [validity, setValidity] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const urlInput = useRef();
-  const urls = {};
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setError("");
     setSuccess("");
+
+    let urls = {};
+    try {
+      urls = JSON.parse(localStorage.getItem("urls")) || {};
+    } catch {
+      urls = {};
+    }
 
     if (!isValid(url)) {
       setError(
@@ -60,7 +64,7 @@ const UrlShortener = () => {
       validityMinutes = parseInt(validity, 10);
     }
 
-    let code = shortcode || generateShorterner();
+    let code = shortcode || generateShorterner(urls);
     if (urls[code]) {
       setError(
         "Shortcode already exists. Choose another or leave blank for auto."
@@ -76,6 +80,7 @@ const UrlShortener = () => {
 
     const expiresAt = Date.now() + validityMinutes * 60 * 1000;
     urls[code] = { url, expiresAt };
+    localStorage.setItem("urls", JSON.stringify(urls));
     setSuccess(`Short URL created: ${window.location.origin}/${code}`);
     logEvent(
       "urlshortener",
